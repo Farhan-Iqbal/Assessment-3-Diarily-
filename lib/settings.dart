@@ -36,12 +36,12 @@ class _SettingsPageState extends State<SettingsPage> {
   int? _currentUserId;
 
   final Map<String, Color> _availableBackgroundColors = {
-    'Deep Purple': Colors.deepPurple,
-    'Light Green': const Color.fromARGB(255, 79, 218, 134),
-    'Light Blue': const Color.fromARGB(255, 99, 116, 241),
-    'Light Pink': const Color.fromARGB(255, 228, 85, 207),
-    'Old Pink': const Color(0xFFF8BBD0),
-    'Teal': Colors.teal,
+    'Light Purple': const Color.fromARGB(255, 184, 147, 249),
+    'Light Green': const Color.fromARGB(255, 148, 215, 175),
+    'Light Blue': const Color.fromARGB(255, 133, 145, 237),
+    'Light Pink': const Color.fromARGB(255, 241, 143, 226),
+    'Peach': const Color.fromARGB(255, 238, 197, 149),
+    'Gray': const Color.fromARGB(255, 116, 128, 126),
     'White': Colors.white,
   };
 
@@ -215,7 +215,7 @@ class _SettingsPageState extends State<SettingsPage> {
                   ElevatedButton(
                     onPressed: _saveSettings,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.teal,
+                      backgroundColor: Colors.deepPurple,
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),

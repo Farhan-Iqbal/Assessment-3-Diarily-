@@ -97,14 +97,19 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        decoration: widget.appTheme.backgroundImagePath != null
-            ? BoxDecoration(
-                image: DecorationImage(
+        // START OF CHANGE
+        decoration: BoxDecoration(
+          color: widget.appTheme.backgroundImagePath == null
+              ? widget.appTheme.backgroundColor // Use background color if no image
+              : null, // Otherwise, let the image handle the background
+          image: widget.appTheme.backgroundImagePath != null
+              ? DecorationImage(
                   image: FileImage(File(widget.appTheme.backgroundImagePath!)),
                   fit: BoxFit.cover,
-                ),
-              )
-            : null,
+                )
+              : null,
+        ),
+        // END OF CHANGE
         child: Center(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
@@ -166,7 +171,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     ElevatedButton(
                       onPressed: _saveChanges,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.teal,
+                        backgroundColor: Colors.deepPurple,
                         foregroundColor: Colors.white,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(20),

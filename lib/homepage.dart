@@ -360,37 +360,36 @@ class _HomePageState extends State<HomePage> {
         onPressed: _onAddPressed,
         child: const Icon(Icons.add),
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
       bottomNavigationBar: BottomAppBar(
-        shape: const CircularNotchedRectangle(),
-        notchMargin: 8,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly, // Changed from spaceAround
           children: [
             IconButton(
               icon: const Icon(Icons.home),
               onPressed: () => setState(() => _selectedIndex = 0),
               tooltip: 'Home',
-              color: _selectedIndex == 0 ? Colors.teal : null,
+              color: _selectedIndex == 0 ? Colors.deepPurple : null,
             ),
             IconButton(
               icon: const Icon(Icons.info),
               onPressed: () => setState(() => _selectedIndex = 1),
               tooltip: 'About',
-              color: _selectedIndex == 1 ? Colors.teal : null,
+              color: _selectedIndex == 1 ? Colors.deepPurple : null,
             ),
-            const SizedBox(width: 40),
+            // REMOVED THE SIZEDBOX HERE
+            // const SizedBox(width: 40),
             IconButton(
               icon: const Icon(Icons.person),
               onPressed: () => setState(() => _selectedIndex = 2),
               tooltip: 'Profile',
-              color: _selectedIndex == 2 ? Colors.teal : null,
+              color: _selectedIndex == 2 ? Colors.deepPurple : null,
             ),
             IconButton(
               icon: const Icon(Icons.settings),
               onPressed: () => setState(() => _selectedIndex = 3),
               tooltip: 'Settings',
-              color: _selectedIndex == 3 ? Colors.teal : null,
+              color: _selectedIndex == 3 ? Colors.deepPurple : null,
             ),
           ],
         ),
