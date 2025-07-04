@@ -69,6 +69,14 @@ class _ProfilePageState extends State<ProfilePage> {
       return;
     }
 
+    // Add password length validation
+    if (newPassword.length < 6) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Password must be at least 6 characters long.')),
+      );
+      return;
+    }
+
     final userId = await UserHelper.getCurrentUserId();
     if (userId == null) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -140,12 +148,19 @@ class _ProfilePageState extends State<ProfilePage> {
                     TextButton.icon(
                       onPressed: _pickProfilePicture,
                       icon: const Icon(Icons.add_a_photo),
-                      label: const Text('Change Profile Picture'),
+                      label: Text(
+                        'Change Profile Picture',
+                        style: TextStyle(fontSize: widget.appTheme.fontSize),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     TextField(
                       controller: _usernameController,
-                      decoration: const InputDecoration(labelText: 'Username'),
+                      decoration: InputDecoration(
+                        labelText: 'Username',
+                        labelStyle: TextStyle(fontSize: widget.appTheme.fontSize),
+                      ),
+                      style: TextStyle(fontSize: widget.appTheme.fontSize),
                     ),
                     const SizedBox(height: 10),
                     TextField(
@@ -153,6 +168,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       obscureText: !_isPasswordVisible,
                       decoration: InputDecoration(
                         labelText: 'Password',
+                        labelStyle: TextStyle(fontSize: widget.appTheme.fontSize),
                         suffixIcon: IconButton(
                           icon: Icon(
                             _isPasswordVisible
@@ -166,6 +182,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           },
                         ),
                       ),
+                      style: TextStyle(fontSize: widget.appTheme.fontSize),
                     ),
                     const SizedBox(height: 20),
                     ElevatedButton(
@@ -179,8 +196,10 @@ class _ProfilePageState extends State<ProfilePage> {
                         padding: const EdgeInsets.symmetric(
                             horizontal: 24, vertical: 12),
                       ),
-                      child: const Text('Save Changes',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
+                      child: Text(
+                        'Save Changes',
+                        style: TextStyle(fontWeight: FontWeight.bold, fontSize: widget.appTheme.fontSize),
+                      ),
                     ),
                   ],
                 ),

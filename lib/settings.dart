@@ -156,22 +156,22 @@ class _SettingsPageState extends State<SettingsPage> {
                     alignment: Alignment.center,
                     child: Text(
                       _username,
-                      style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                      style: TextStyle(fontSize: _fontSize + 2, fontWeight: FontWeight.w600), // Apply font size
                     ),
                   ),
                   const Divider(),
                   ListTile(
-                    title: const Text('Font Size'),
+                    title: Text('Font Size', style: TextStyle(fontSize: _fontSize)), // Apply font size
                     trailing: DropdownButton<double>(
                       value: _fontSize,
                       onChanged: (newValue) => setState(() => _fontSize = newValue!),
                       items: [12.0, 14.0, 16.0, 18.0, 20.0, 22.0]
-                          .map((value) => DropdownMenuItem(value: value, child: Text(value.toString())))
+                          .map((value) => DropdownMenuItem(value: value, child: Text(value.toString(), style: TextStyle(fontSize: _fontSize)))) // Apply font size
                           .toList(),
                     ),
                   ),
                   ListTile(
-                    title: const Text('Background Color'),
+                    title: Text('Background Color', style: TextStyle(fontSize: _fontSize)), // Apply font size
                     trailing: DropdownButton<Color>(
                       value: _availableBackgroundColors.containsValue(_backgroundColor)
                           ? _backgroundColor
@@ -185,13 +185,13 @@ class _SettingsPageState extends State<SettingsPage> {
                       items: _sortedBackgroundColors
                           .map((entry) => DropdownMenuItem(
                                 value: entry.value,
-                                child: Text(entry.key, style: const TextStyle(color: Colors.black)),
+                                child: Text(entry.key, style: TextStyle(color: Colors.black, fontSize: _fontSize)), // Apply font size
                               ))
                           .toList(),
                     ),
                   ),
                   ListTile(
-                    title: const Text('Background Image'),
+                    title: Text('Background Image', style: TextStyle(fontSize: _fontSize)), // Apply font size
                     trailing: IconButton(
                       icon: const Icon(Icons.image),
                       onPressed: () async {
@@ -222,13 +222,13 @@ class _SettingsPageState extends State<SettingsPage> {
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                     ),
-                    child: const Text('Save Changes', style: TextStyle(fontWeight: FontWeight.bold)),
+                    child: Text('Save Changes', style: TextStyle(fontWeight: FontWeight.bold, fontSize: _fontSize)), // Apply font size
                   ),
                   const SizedBox(height: 10),
                   ElevatedButton(
                     onPressed: _logout,
                     style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                    child: const Text('Logout', style: TextStyle(color: Colors.white)),
+                    child: Text('Logout', style: TextStyle(color: Colors.white, fontSize: _fontSize)), // Apply font size
                   ),
                 ],
               ),

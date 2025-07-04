@@ -206,7 +206,9 @@ class _HomePageState extends State<HomePage> {
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide.none,
               ),
+              hintStyle: TextStyle(fontSize: _currentTheme.fontSize), // Apply font size to hint text
             ),
+            style: TextStyle(fontSize: _currentTheme.fontSize), // Apply font size to input text
           ),
         ),
         Expanded(
@@ -225,6 +227,7 @@ class _HomePageState extends State<HomePage> {
                           _selectedDay != null
                               ? 'No entries for ${DateFormat('yyyy-MM-dd').format(_selectedDay!)}'
                               : 'No diary entries yet. Click "+" to add one!',
+                          style: TextStyle(fontSize: _currentTheme.fontSize), // Apply font size
                         ),
                       ),
                     ],
@@ -247,11 +250,11 @@ class _HomePageState extends State<HomePage> {
                           return await showDialog(
                             context: context,
                             builder: (_) => AlertDialog(
-                              title: const Text('Confirm Delete'),
-                              content: const Text('Are you sure you want to delete this diary entry?'),
+                              title: Text('Confirm Delete', style: TextStyle(fontSize: _currentTheme.fontSize)), // Apply font size
+                              content: Text('Are you sure you want to delete this diary entry?', style: TextStyle(fontSize: _currentTheme.fontSize)), // Apply font size
                               actions: [
-                                TextButton(onPressed: () => Navigator.pop(context, false), child: const Text('Cancel')),
-                                TextButton(onPressed: () => Navigator.pop(context, true), child: const Text('Delete')),
+                                TextButton(onPressed: () => Navigator.pop(context, false), child: Text('Cancel', style: TextStyle(fontSize: _currentTheme.fontSize))), // Apply font size
+                                TextButton(onPressed: () => Navigator.pop(context, true), child: Text('Delete', style: TextStyle(fontSize: _currentTheme.fontSize))), // Apply font size
                               ],
                             ),
                           );
@@ -269,10 +272,11 @@ class _HomePageState extends State<HomePage> {
                             ),
                             title: Text(
                               diary['title'] ?? 'No Title',
-                              style: const TextStyle(fontWeight: FontWeight.bold),
+                              style: TextStyle(fontWeight: FontWeight.bold, fontSize: _currentTheme.fontSize), // Apply font size
                             ),
                             subtitle: Text(
                               'Feeling: ${diary['feeling']}\n${diary['description']}\n${DateFormat('yyyy-MM-dd').format(DateTime.parse(diary['createdAt']))}',
+                              style: TextStyle(fontSize: _currentTheme.fontSize - 2), // Apply font size, slightly smaller
                             ),
                             trailing: IconButton(
                               icon: const Icon(Icons.edit),
